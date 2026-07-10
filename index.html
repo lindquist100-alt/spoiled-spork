@@ -37,7 +37,6 @@
       opacity: 0.7;
     }
 
-    /* Apple-style pinned text */
     .pinned-text {
       font-size: 3rem;
       text-align: center;
@@ -45,7 +44,6 @@
       transform: translateY(40px);
     }
 
-    /* Product showcase */
     .product-showcase {
       position: relative;
       height: 250vh;
@@ -58,6 +56,7 @@
       margin: 0 auto;
       display: block;
       transform: scale(1) rotate(0deg);
+      border-radius: 20px;
     }
 
     .product-caption {
@@ -68,7 +67,6 @@
       font-size: 2rem;
     }
 
-    /* Vision Pro parallax */
     .parallax {
       position: relative;
       height: 150vh;
@@ -103,50 +101,43 @@
 
 <body>
 
-  <!-- HERO -->
   <section class="hero">
     <h1 class="hero-title">Julian</h1>
     <p class="hero-sub">Creative Developer • Motion Designer</p>
   </section>
 
-  <!-- PINNED TEXT -->
   <section>
     <div class="pinned-text">
       Smooth. Cinematic. Apple‑level storytelling.
     </div>
   </section>
 
-  <!-- PRODUCT SCROLL -->
   <section class="product-showcase">
-    <img src="assets/product.png" class="product-image">
+    <img src="Screenshot 2025-10-06 213916.png" class="product-image">
 
     <div class="product-caption">
       Precision motion. Scroll‑controlled animation.
     </div>
   </section>
 
-  <!-- VISION PRO PARALLAX -->
   <section class="parallax">
-    <img src="assets/parallax.jpg" class="parallax-bg">
+    <img src="Screenshot 2025-10-06 213916.png" class="parallax-bg">
     <div class="parallax-text">
       Depth. Motion. Immersion.
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="contact">
     <h2>Let’s Build Something</h2>
     <p>julian@example.com</p>
   </section>
 
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    /* HERO INTRO */
     gsap.from(".hero-title", {
       scale: 0.9,
       opacity: 0,
@@ -154,7 +145,6 @@
       ease: "power2.out"
     });
 
-    /* PINNED TEXT */
     gsap.to(".pinned-text", {
       opacity: 1,
       y: 0,
@@ -167,7 +157,6 @@
       }
     });
 
-    /* PRODUCT ZOOM + ROTATION */
     gsap.to(".product-image", {
       scale: 1.6,
       rotate: 25,
@@ -180,7 +169,6 @@
       }
     });
 
-    /* PRODUCT CAPTION FADE-IN */
     gsap.to(".product-caption", {
       opacity: 1,
       y: 0,
@@ -192,7 +180,6 @@
       }
     });
 
-    /* VISION PRO PARALLAX */
     gsap.to(".parallax-bg", {
       y: -200,
       ease: "none",
@@ -218,3 +205,4 @@
 
 </body>
 </html>
+
