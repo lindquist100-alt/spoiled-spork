@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julian — Apple Motion Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 120px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 6rem;
+      font-weight: 700;
+    }
+
+    .hero-sub {
+      font-size: 1.5rem;
+      opacity: 0.7;
+    }
+
+    /* Apple-style pinned text */
+    .pinned-text {
+      font-size: 3rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    /* Product showcase */
+    .product-showcase {
+      position: relative;
+      height: 250vh;
+    }
+
+    .product-image {
+      position: sticky;
+      top: 20%;
+      width: 50%;
+      margin: 0 auto;
+      display: block;
+      transform: scale(1) rotate(0deg);
+    }
+
+    .product-caption {
+      opacity: 0;
+      transform: translateY(40px);
+      margin-top: 40vh;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    /* Vision Pro parallax */
+    .parallax {
+      position: relative;
+      height: 150vh;
+      overflow: hidden;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      transform: translateY(0px);
+      opacity: 0.4;
+    }
+
+    .parallax-text {
+      position: relative;
+      margin-top: 40vh;
+      text-align: center;
+      font-size: 3rem;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .contact {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">Julian</h1>
+    <p class="hero-sub">Creative Developer • Motion Designer</p>
+  </section>
+
+  <!-- PINNED TEXT -->
+  <section>
+    <div class="pinned-text">
+      Smooth. Cinematic. Apple‑level storytelling.
+    </div>
+  </section>
+
+  <!-- PRODUCT SCROLL -->
+  <section class="product-showcase">
+    <img src="assets/product.png" class="product-image">
+
+    <div class="product-caption">
+      Precision motion. Scroll‑controlled animation.
+    </div>
+  </section>
+
+  <!-- VISION PRO PARALLAX -->
+  <section class="parallax">
+    <img src="assets/parallax.jpg" class="parallax-bg">
+    <div class="parallax-text">
+      Depth. Motion. Immersion.
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <h2>Let’s Build Something</h2>
+    <p>julian@example.com</p>
+  </section>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* HERO INTRO */
+    gsap.from(".hero-title", {
+      scale: 0.9,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power2.out"
+    });
+
+    /* PINNED TEXT */
+    gsap.to(".pinned-text", {
+      opacity: 1,
+      y: 0,
+      scrollTrigger: {
+        trigger: ".pinned-text",
+        start: "top 80%",
+        scrub: true,
+        pin: true,
+        pinSpacing: true
+      }
+    });
+
+    /* PRODUCT ZOOM + ROTATION */
+    gsap.to(".product-image", {
+      scale: 1.6,
+      rotate: 25,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".product-showcase",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true
+      }
+    });
+
+    /* PRODUCT CAPTION FADE-IN */
+    gsap.to(".product-caption", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: ".product-caption",
+        start: "top 80%",
+        scrub: true
+      }
+    });
+
+    /* VISION PRO PARALLAX */
+    gsap.to(".parallax-bg", {
+      y: -200,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".parallax",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true
+      }
+    });
+
+    gsap.to(".parallax-text", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: ".parallax-text",
+        start: "top 80%",
+        scrub: true
+      }
+    });
+  </script>
+
+</body>
+</html>
